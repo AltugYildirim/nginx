@@ -17,6 +17,6 @@ spec:
       containers:
         - image: image-registry.openshift-image-registry.svc:5000/sekerbank-devops/nginx-hello-world:latest
           imagePullPolicy: Always
-          name: vote-ui
+          name: nginx-hello-world
           ports:
             - containerPort: 8080
