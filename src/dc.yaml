@@ -1,22 +1,19 @@
 apiVersion: apps.openshift.io/v1
 kind: DeploymentConfig
 metadata:
-  labels:
-    app: nginx-hello-world
   name: nginx-hello-world
+  namespace: sekerbank-devops
 spec:
-  replicas: 1
   selector:
-    matchLabels:
-      app: nginx-hello-world
+    app: nginx-hello-world
+  replicas: 1
   template:
     metadata:
       labels:
         app: nginx-hello-world
     spec:
       containers:
-        - image: image-registry.openshift-image-registry.svc:5000/sekerbank-devops/nginx-hello-world:latest
-          imagePullPolicy: Always
-          name: nginx-hello-world
+        - name: nginx-hello-world
+          image: image-registry.openshift-image-registry.svc:5000/sekerbank-devops/nginx-hello-world:latest
           ports:
             - containerPort: 8080
